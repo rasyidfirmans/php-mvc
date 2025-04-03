@@ -1,7 +1,8 @@
 <?php
-    class Home {
+    require_once '../app/core/Controller.php';
+    class Home extends Controller {
         public function index() {
-            echo "hello from method home/index:)";
+            $this->view("home/index");
         }
     }
 ?>

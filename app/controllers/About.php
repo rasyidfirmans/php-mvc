@@ -1,7 +1,12 @@
 <?php
-    class About {
+    require_once '../app/core/Controller.php';
+    class About extends Controller {
         public function index() {
-            echo "hello from method about/index";
+            $this->view("about/index");
+        }
+
+        public function page() {
+            $this->view("about/page");
         }
     }
 ?>
