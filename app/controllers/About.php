@@ -1,5 +1,4 @@
 <?php
-    require_once '../app/core/Controller.php';
     class About extends Controller {
         public function index($name = "Rasyid", $job = "student") {
             $title = ["About Page"];
