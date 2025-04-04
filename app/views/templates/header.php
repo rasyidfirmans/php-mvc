@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/app.css">
-    <title><?= $data[0] ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <title><?= $data["title"] ?></title>
 </head>
 <body>
 <nav class="bg-gray-800" x-data="{ isOpen: false}">
@@ -39,10 +40,10 @@
                     @click="current = 'about'" 
                     :class="{ 'bg-gray-900 text-white': current === 'about', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'about' }" 
                     class="rounded-md px-3 py-2 text-sm font-medium">About</a>
-                <a href="#" 
-                    @click="current = 'projects'" 
-                    :class="{ 'bg-gray-900 text-white': current === 'projects', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'projects' }" 
-                    class="rounded-md px-3 py-2 text-sm font-medium">Projects</a>
+                <a href="<?= BASEURL; ?>/mahasiswa" 
+                    @click="current = 'mahasiswa'" 
+                    :class="{ 'bg-gray-900 text-white': current === 'mahasiswa', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'mahasiswa' }" 
+                    class="rounded-md px-3 py-2 text-sm font-medium">Mahasiswa</a>
                 <a href="#" 
                     @click="current = 'calendar'" 
                     :class="{ 'bg-gray-900 text-white': current === 'calendar', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'calendar' }" 
@@ -92,7 +93,7 @@
     <div x-data="{ current: null }" class="space-y-1 px-2 pt-2 pb-3">
       <a href="<?= BASEURL; ?>/"  @click="current = 'home'" :class="{ 'bg-gray-900 text-white': current === 'home', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'home' }" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
       <a href="<?= BASEURL; ?>/about"  @click="current = 'about'" :class="{ 'bg-gray-900 text-white': current === 'about', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'about' }" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
-      <a href="#"  @click="current = 'projects'" :class="{ 'bg-gray-900 text-white': current === 'projects', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'projects' }" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
+      <a href="<?= BASEURL; ?>/mahasiswa"  @click="current = 'mahasiswa'" :class="{ 'bg-gray-900 text-white': current === 'mahasiswa', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'mahasiswa' }" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Mahasiswa</a>
       <a href="#"  @click="current = 'calendar'" :class="{ 'bg-gray-900 text-white': current === 'calendar', 'text-gray-300 hover:bg-gray-700 hover:text-white': current !== 'calendar' }" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
     </div>
   </div>

@@ -1,16 +1,17 @@
 <?php
     class About extends Controller {
-        public function index($name = "Rasyid", $job = "student") {
-            $title = ["About Page"];
-            $data = [$name, $job];
-            $this->view("templates/header", $title);
+        public function index() {
+            $data["title"] = "About Page";
+            $data["name"] = "Rasyid Firmansyah";
+            $data["job"] = "Student";
+            $this->view("templates/header", $data);
             $this->view("about/index", $data);
             $this->view("templates/footer");
         }
         
         public function page() {
-            $title = ["About Page - Page"];
-            $this->view("templates/header", $title);
+            $data["title"] = "About Page - Page";
+            $this->view("templates/header", $data);
             $this->view("about/page");
             $this->view("templates/footer");
         }
