@@ -5,7 +5,10 @@
             $data["mahasiswa"] = $this->model("Mahasiswa_model")->getAllMahasiswa();
             $this->view("templates/header", $data);
             $this->view("mahasiswa/index", $data);
+            $this->view("templates/notification/toast");
             $this->view("templates/footer");
+
+            Notification::unset();
         }
 
         public function detail($id) {
@@ -21,6 +24,21 @@
                 $affected_rows = $this->model("Mahasiswa_model")->insertDataMahasiswa($_POST);
 
                 if ($affected_rows > 0) {
+                    $message = "Data mahasiswa";
+                    $action = "ditambahkan";
+                    $type = "berhasil";
+
+                    Notification::setNotification($message, $action, $type);
+                    
+                    header("Location: " . BASEURL . "/mahasiswa");
+                    exit;
+                } else {
+                    $message = "Data mahasiswa";
+                    $action = "ditambahkan";
+                    $type = "gagal";
+                    
+                    Notification::setNotification($message, $action, $type);
+
                     header("Location: " . BASEURL . "/mahasiswa");
                     exit;
                 }
