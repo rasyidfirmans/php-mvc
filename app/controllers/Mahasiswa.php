@@ -15,5 +15,21 @@
             $this->view("mahasiswa/detail", $data);
             $this->view("templates/footer");
         }
+
+        public function insert() {
+            if (isset($_POST["submit"])) {
+                $affected_rows = $this->model("Mahasiswa_model")->insertDataMahasiswa($_POST);
+
+                if ($affected_rows > 0) {
+                    header("Location: " . BASEURL . "/mahasiswa");
+                    exit;
+                }
+            }
+
+            $data["title"] = "Tambah Data Mahasiswa";
+            $this->view("templates/header", $data);
+            $this->view("mahasiswa/insert");
+            $this->view("templates/footer");
+        }
     }
 ?>

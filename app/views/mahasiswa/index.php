@@ -13,5 +13,10 @@
                 </a>
             </li>
         <?php endforeach; ?>
+        <li class="border border-black rounded-xl py-5 px-5 text-center text-slate-500 cursor-pointer">
+            <a href="<?= BASEURL; ?>/mahasiswa/insert">
+                Tambah Data
+            </a>
+        </li>
     </ul>
 </div>
