@@ -21,7 +21,6 @@
         }
 
         public function insertDataMahasiswa($data) {
-            // var_dump($data);
             $query = "
                 INSERT INTO " . $this->table . " (nama, nim, prodi, email)
                 VALUES (:nama, :nim, :prodi, :email);
@@ -31,6 +30,17 @@
             $this->db->bind(":nim", $data["nim"]);
             $this->db->bind(":prodi", $data["prodi"]);
             $this->db->bind(":email", $data["email"]);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
+
+        public function deleteDataMahasiswa($id) {
+            $query = "
+                DELETE FROM " . $this->table . " WHERE id = :id
+            ";
+
+            $this->db->query($query);
+            $this->db->bind(":id", $id);
             $this->db->execute();
             return $this->db->rowCount();
         }

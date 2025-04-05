@@ -49,5 +49,35 @@
             $this->view("mahasiswa/insert");
             $this->view("templates/footer");
         }
+
+        public function delete($id) {
+            var_dump($id);
+            $data["title"] = "Delete Mahasiswa";
+            $affected_rows = $this->model("Mahasiswa_model")->deleteDataMahasiswa($id);
+
+            if ($affected_rows > 0) {
+                $message = "Data mahasiswa";
+                $action = "dihapus";
+                $type = "berhasil";
+
+                Notification::setNotification($message, $action, $type);
+                
+                header("Location: " . BASEURL . "/mahasiswa");
+                exit;
+            } else {
+                $message = "Data mahasiswa";
+                $action = "dihapus";
+                $type = "gagal";
+                
+                Notification::setNotification($message, $action, $type);
+
+                header("Location: " . BASEURL . "/mahasiswa");
+                exit;
+            }
+
+            $this->view("templates/header", $data);
+            $this->view("mahasiswa/index");
+            $this->view("templates/footer");
+        }
     }
 ?>
