@@ -44,5 +44,22 @@
             $this->db->execute();
             return $this->db->rowCount();
         }
+
+        public function updateDataMahasiswa($data) {
+            $query = "
+                UPDATE " . $this->table . "
+                SET nama = :nama, nim = :nim, prodi = :prodi, email = :email
+                WHERE id = :id;
+            ";
+
+            $this->db->query($query);
+            $this->db->bind(":nama", $data["nama"]);
+            $this->db->bind(":nim", $data["nim"]);
+            $this->db->bind(":prodi", $data["prodi"]);
+            $this->db->bind(":email", $data["email"]);
+            $this->db->bind(":id", $data["id"]);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
     }
 ?>

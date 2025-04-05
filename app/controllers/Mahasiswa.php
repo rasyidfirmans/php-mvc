@@ -51,7 +51,6 @@
         }
 
         public function delete($id) {
-            var_dump($id);
             $data["title"] = "Delete Mahasiswa";
             $affected_rows = $this->model("Mahasiswa_model")->deleteDataMahasiswa($id);
 
@@ -78,6 +77,40 @@
             $this->view("templates/header", $data);
             $this->view("mahasiswa/index");
             $this->view("templates/footer");
+        }
+
+        public function update($id) {
+            $data["title"] = "Update Mahasiswa";
+            $data["mahasiswa"] = $this->model("Mahasiswa_model")->getSingleMahasiswa($id);
+
+            if (isset($_POST["submit"])) {
+                $affected_rows = $this->model("Mahasiswa_model")->updateDataMahasiswa($_POST);
+
+                if ($affected_rows > 0) {
+                    $message = "Data mahasiswa";
+                    $action = "diupdate";
+                    $type = "berhasil";
+
+                    Notification::setNotification($message, $action, $type);
+                    
+                    header("Location: " . BASEURL . "/mahasiswa");
+                    exit;
+                } else {
+                    $message = "Data mahasiswa";
+                    $action = "diupdate";
+                    $type = "gagal";
+                    
+                    Notification::setNotification($message, $action, $type);
+
+                    header("Location: " . BASEURL . "/mahasiswa");
+                    exit;
+                }
+            }
+
+            $this->view("templates/header", $data);
+            $this->view("mahasiswa/update", $data);
+            $this->view("templates/footer");
+
         }
     }
 ?>
