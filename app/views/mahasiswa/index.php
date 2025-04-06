@@ -1,6 +1,13 @@
 <div class="my-12">
     <h1 class="text-center text-3xl mb-12">Daftar Mahasiswa</h1>
 
+    <div class="mx-auto max-w-xl flex justify-center mb-16">
+        <form action="" method="POST">
+            <input type="text" name="keyword" id="keyword" class="flex-2/3 px-3 py-1 border rounded-md focus:outline-2 focus:outline-blue-600 focus:border-0">
+            <button type="submit" class="flex-1/3 bg-blue-600 border border-blue-600 rounded-md text-white py-1 px-3 hover:bg-blue-500 active:bg-blue-400 ml-1">Search</button>
+        </form>
+    </div>
+
     <ul class="mx-auto max-w-2xl flex flex-col gap-y-5">
         <?php foreach ($data["mahasiswa"] as $mahasiswa) : ?>
             <li class="border rounded-xl py-5 px-5 flex justify-between items-center">

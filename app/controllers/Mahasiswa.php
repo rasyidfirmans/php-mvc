@@ -2,7 +2,15 @@
     class Mahasiswa extends Controller {
         public function index() {
             $data["title"] = "Page Mahasiswa";
-            $data["mahasiswa"] = $this->model("Mahasiswa_model")->getAllMahasiswa();
+
+            if (isset($_POST["keyword"])) {
+                $data["mahasiswa"] = $this->model("Mahasiswa_model")->searchDataMahasiswa($_POST["keyword"]);
+                var_dump($data["mahasiswa"]);
+            } else {
+                $data["mahasiswa"] = $this->model("Mahasiswa_model")->getAllMahasiswa();
+            }
+
+
             $this->view("templates/header", $data);
             $this->view("mahasiswa/index", $data);
             $this->view("templates/notification/toast");

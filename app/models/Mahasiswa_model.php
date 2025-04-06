@@ -61,5 +61,16 @@
             $this->db->execute();
             return $this->db->rowCount();
         }
+
+        public function searchDataMahasiswa($keyword) {
+            $query = "SELECT * FROM " . $this->table . " WHERE nama LIKE :nama OR nim LIKE :nim OR prodi LIKE :prodi;";
+
+            $this->db->query($query);
+            $this->db->bind(":nama", "%". $keyword . "%");
+            $this->db->bind(":nim", "%". $keyword . "%");
+            $this->db->bind(":prodi", "%". $keyword . "%");
+            $this->db->execute();
+            return $this->db->resultSet();
+        }
     }
 ?>
